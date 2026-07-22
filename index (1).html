@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priya Darshini V | Digital Marketing &amp; Performance Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-deep:#C9376A;
+    --pink:#E8547B;
+    --pink-soft:#FF8FAE;
+    --pink-tint:#FFF1F5;
+    --pink-tint-2:#FFE3EC;
+    --ink:#241B22;
+    --ink-soft:#6E5F68;
+    --white:#FFFFFF;
+    --line:#F1DCE3;
+    --shadow: 0 20px 50px -25px rgba(201,55,106,0.35);
+    --serif: 'Fraunces', serif;
+    --sans: 'Outfit', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--white);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+  /* ===== Nav ===== */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, box-shadow .3s ease;
+  }
+  header.nav.scrolled{border-bottom-color:var(--line); box-shadow:0 8px 30px -20px rgba(201,55,106,.4);}
+  .nav-inner{
+    max-width:1120px;margin:0 auto;padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--serif); font-weight:600; font-size:1.25rem; letter-spacing:.01em;
+    color:var(--ink);
+  }
+  .logo span{color:var(--pink);}
+  nav.links{display:flex; gap:34px;}
+  nav.links a{
+    font-size:.92rem; font-weight:500; color:var(--ink-soft);
+    position:relative; padding:4px 0; transition:color .25s ease;
+  }
+  nav.links a::after{
+    content:''; position:absolute; left:0; bottom:-2px; height:2px; width:0;
+    background:var(--pink); transition:width .3s ease;
+  }
+  nav.links a:hover{color:var(--ink);}
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{
+    display:flex; gap:12px; align-items:center;
+  }
+  .btn-mini{
+    font-size:.95rem; font-weight:700; padding:11px 24px; border-radius:100px;
+    background:var(--ink); color:#ffffff; transition:transform .25s ease, background .25s ease;
+    white-space:nowrap; letter-spacing:.02em;
+  }
+  .btn-mini:hover{background:var(--pink-deep); transform:translateY(-2px);}
+  .nav-toggle{display:none;}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    padding:168px 0 110px;
+    background:
+      radial-gradient(60% 55% at 82% 8%, var(--pink-tint) 0%, rgba(255,241,245,0) 70%),
+      var(--white);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.78rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--pink-deep); background:var(--pink-tint); border:1px solid var(--pink-tint-2);
+    padding:7px 14px; border-radius:100px; margin-bottom:26px;
+    opacity:0; animation:fadeUp .7s ease forwards;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--pink); animation:pulse 1.8s ease-in-out infinite;}
+  h1.name{
+    font-family:var(--serif); font-weight:600; letter-spacing:-.01em;
+    font-size:clamp(2.6rem, 5.2vw, 4.2rem); line-height:1.02; color:var(--ink);
+    opacity:0; animation:fadeUp .8s ease .1s forwards;
+  }
+  h1.name em{
+    font-style:italic; font-weight:500; color:var(--pink-deep);
+    background:linear-gradient(180deg, transparent 62%, var(--pink-tint-2) 62%);
+  }
+  .role-line{
+    margin-top:18px; font-size:clamp(1.02rem,1.6vw,1.2rem); font-weight:500; color:var(--ink);
+    opacity:0; animation:fadeUp .8s ease .22s forwards;
+  }
+  .tagline{
+    margin-top:14px; max-width:520px; font-size:1rem; line-height:1.65; color:var(--ink-soft);
+    opacity:0; animation:fadeUp .8s ease .32s forwards;
+  }
+  .loc-line{
+    margin-top:18px; display:flex; align-items:center; gap:8px;
+    font-size:.88rem; color:var(--ink-soft); font-weight:500;
+    opacity:0; animation:fadeUp .8s ease .4s forwards;
+  }
+  .hero-actions{
+    margin-top:34px; display:flex; flex-wrap:wrap; gap:14px; align-items:center;
+    opacity:0; animation:fadeUp .8s ease .5s forwards;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    font-size:.92rem; font-weight:600; padding:14px 26px; border-radius:100px;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    border:1.5px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%);
+    color:var(--white); box-shadow:var(--shadow);
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 24px 40px -18px rgba(201,55,106,.55);}
+  .btn-outline{
+    background:var(--white); color:var(--ink); border-color:var(--line);
+  }
+  .btn-outline:hover{border-color:var(--pink); color:var(--pink-deep); transform:translateY(-3px);}
+  .icon-circle{
+    width:44px; height:44px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+    border:1.5px solid var(--line); background:var(--white); transition:all .25s ease; flex-shrink:0;
+  }
+  .icon-circle:hover{background:var(--pink-tint); border-color:var(--pink-soft); transform:translateY(-3px);}
+  .icon-circle svg{width:18px;height:18px;}
+
+  /* hero visual */
+  .hero-visual{
+    position:relative; display:flex; align-items:center; justify-content:center;
+    opacity:0; animation:fadeIn 1s ease .5s forwards;
+  }
+  .metric-card{
+    position:absolute; background:var(--white); border:1px solid var(--line); border-radius:16px;
+    padding:14px 18px; box-shadow:0 18px 40px -22px rgba(201,55,106,.4);
+    font-size:.8rem; font-weight:600; display:flex; flex-direction:column; gap:2px;
+  }
+  .metric-card .num{font-family:var(--serif); font-size:1.5rem; color:var(--pink-deep); font-weight:600;}
+  .metric-card .lbl{color:var(--ink-soft); font-weight:500; font-size:.72rem; text-transform:uppercase; letter-spacing:.06em;}
+  .metric-1{top:6%; left:0; animation:floaty 5s ease-in-out infinite;}
+  .metric-2{bottom:10%; right:2%; animation:floaty 6s ease-in-out infinite .5s;}
+  .pulse-orb{
+    width:320px; height:320px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--pink-soft), var(--pink-deep) 75%);
+    position:relative; overflow:hidden;
+  }
+  .pulse-svg{position:absolute; inset:0; width:100%; height:100%;}
+
+  .photo-frame{
+    position:relative; width:320px; height:380px;
+  }
+  .photo-frame img{
+    position:relative; z-index:1; width:100%; height:100%; object-fit:cover;
+    border-radius:28px; border:5px solid var(--white);
+    box-shadow:0 26px 56px -22px rgba(201,55,106,.55);
+  }
+
+  @keyframes fadeUp{from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);}}
+  @keyframes fadeIn{from{opacity:0;} to{opacity:1;}}
+  @keyframes pulse{0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.6); opacity:.5;}}
+  @keyframes floaty{0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);}}
+
+  /* ===== Section shared ===== */
+  section{padding:100px 0;}
+  .section-head{margin-bottom:52px; max-width:640px;}
+  .section-eyebrow{
+    font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--pink-deep); margin-bottom:12px;
+  }
+  h2.section-title{
+    font-family:var(--serif); font-weight:600; font-size:clamp(1.9rem,3.4vw,2.6rem); letter-spacing:-.01em; color:var(--ink);
+  }
+  .section-sub{margin-top:14px; color:var(--ink-soft); font-size:1rem; line-height:1.65;}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ===== About ===== */
+  .about{background:var(--pink-tint); position:relative;}
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;}
+  .about-card{
+    background:var(--white); border-radius:20px; padding:32px; border:1px solid var(--pink-tint-2);
+    box-shadow:var(--shadow);
+  }
+  .about-card .quote-mark{font-family:var(--serif); font-size:3rem; color:var(--pink-soft); line-height:1;}
+  .about-card p{font-size:1.02rem; line-height:1.75; color:var(--ink); margin-top:6px;}
+  .focus-list{margin-top:26px; display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .focus-item{
+    display:flex; align-items:center; gap:10px; font-size:.85rem; font-weight:600; color:var(--ink);
+    background:var(--pink-tint); border:1px solid var(--pink-tint-2); padding:11px 14px; border-radius:12px;
+  }
+  .focus-item .sw{width:8px;height:8px;border-radius:50%;background:var(--pink); flex-shrink:0;}
+
+  .edu-list{display:flex; flex-direction:column; gap:18px;}
+  .edu-item{
+    background:var(--white); border:1px solid var(--pink-tint-2); border-radius:16px; padding:20px 24px;
+    display:flex; justify-content:space-between; gap:16px; align-items:flex-start;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .edu-item:hover{transform:translateX(4px); box-shadow:0 14px 30px -20px rgba(201,55,106,.4);}
+  .edu-item .deg{font-weight:600; font-size:.98rem; color:var(--ink);}
+  .edu-item .sch{font-size:.86rem; color:var(--ink-soft); margin-top:4px;}
+  .edu-item .yr{font-size:.78rem; font-weight:600; color:var(--pink-deep); white-space:nowrap; padding-top:2px;}
+
+  /* ===== Experience (timeline) ===== */
+  .timeline{position:relative; padding-left:38px;}
+  .timeline::before{
+    content:''; position:absolute; left:9px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(var(--pink-tint-2), var(--pink-soft), var(--pink-tint-2));
+  }
+  .tl-item{position:relative; padding-bottom:48px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{
+    position:absolute; left:-38px; top:4px; width:20px; height:20px; border-radius:50%;
+    background:var(--white); border:3px solid var(--pink); box-shadow:0 0 0 5px var(--pink-tint);
+  }
+  .tl-card{
+    background:var(--white); border:1px solid var(--line); border-radius:18px; padding:28px 30px;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .tl-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px -24px rgba(201,55,106,.45); border-color:var(--pink-tint-2);}
+  .tl-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; align-items:baseline; margin-bottom:6px;}
+  .tl-role{font-family:var(--serif); font-weight:600; font-size:1.2rem; color:var(--ink);}
+  .tl-date{font-size:.78rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--pink-deep); background:var(--pink-tint); padding:5px 12px; border-radius:100px; white-space:nowrap;}
+  .tl-org{font-size:.92rem; color:var(--ink-soft); font-weight:500; margin-bottom:16px;}
+  .tl-list{display:flex; flex-direction:column; gap:10px;}
+  .tl-list li{
+    font-size:.92rem; line-height:1.6; color:var(--ink); position:relative; padding-left:20px;
+  }
+  .tl-list li::before{
+    content:''; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--pink-soft);
+  }
+  .tl-tags{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{font-size:.74rem; font-weight:600; color:var(--pink-deep); background:var(--pink-tint); padding:5px 12px; border-radius:100px;}
+
+  /* ===== Skills ===== */
+  .skills-band{background:var(--ink); color:var(--white);}
+  .skills-band .section-eyebrow{color:var(--pink-soft);}
+  .skills-band h2.section-title{color:var(--white);}
+  .skills-band .section-sub{color:#C9BCC2;}
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;
+  }
+  .skill-chip{
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12);
+    border-radius:14px; padding:20px 18px; display:flex; flex-direction:column; gap:10px;
+    transition:transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .skill-chip:hover{transform:translateY(-5px); background:rgba(232,84,123,0.14); border-color:var(--pink-soft);}
+  .skill-chip .ic{
+    width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--pink), var(--pink-deep));
+    display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:600; font-size:.95rem; color:var(--white);
+  }
+  .skill-chip .nm{font-size:.9rem; font-weight:600;}
+
+  /* ===== Projects ===== */
+  .projects-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;}
+  .proj-card{
+    background:var(--white); border:1px solid var(--line); border-radius:20px; padding:30px;
+    display:flex; flex-direction:column; height:100%;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .proj-card:hover{transform:translateY(-8px); box-shadow:0 26px 50px -26px rgba(201,55,106,.5); border-color:var(--pink-tint-2);}
+  .proj-icon{
+    width:52px; height:52px; border-radius:14px; background:var(--pink-tint);
+    display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+  }
+  .proj-icon svg{width:24px; height:24px; stroke:var(--pink-deep);}
+  .proj-tag{font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--pink-deep); margin-bottom:8px;}
+  .proj-title{font-family:var(--serif); font-weight:600; font-size:1.22rem; color:var(--ink); margin-bottom:14px; line-height:1.3;}
+  .proj-list{display:flex; flex-direction:column; gap:9px;}
+  .proj-list li{font-size:.87rem; line-height:1.55; color:var(--ink-soft); position:relative; padding-left:18px;}
+  .proj-list li::before{content:'—'; position:absolute; left:0; color:var(--pink-soft); font-weight:700;}
+  .proj-link{
+    display:inline-flex; align-items:center; gap:6px; margin-top:auto; padding-top:16px;
+    font-size:.84rem; font-weight:700; color:var(--pink-deep);
+    border-top:1px solid var(--line);
+  }
+  .proj-link svg{width:14px; height:14px; transition:transform .2s ease;}
+  .proj-link:hover svg{transform:translate(2px,-2px);}
+
+  /* ===== Certifications ===== */
+  .certs{background:var(--pink-tint);}
+  .certs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .cert-card{
+    background:var(--white); border-radius:16px; padding:22px 24px; display:flex; align-items:center; gap:16px;
+    border:1px solid var(--pink-tint-2); transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .cert-card:hover{transform:translateY(-4px); box-shadow:0 16px 34px -22px rgba(201,55,106,.45);}
+  .cert-badge{
+    width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,var(--pink),var(--pink-deep));
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .cert-badge svg{width:19px;height:19px; stroke:white;}
+  .cert-name{font-size:.9rem; font-weight:600; color:var(--ink); line-height:1.35;}
+
+  /* ===== Contact ===== */
+  .contact{
+    position:relative; text-align:center;
+    background:linear-gradient(180deg, var(--white), var(--pink-tint));
+  }
+  .contact .section-head{margin:0 auto 40px; text-align:center;}
+  .contact-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:920px; margin:0 auto;}
+  .contact-card{
+    background:var(--white); border:1px solid var(--line); border-radius:18px; padding:30px 22px;
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .contact-card:hover{transform:translateY(-6px); box-shadow:0 22px 44px -26px rgba(201,55,106,.5); border-color:var(--pink-soft);}
+  .contact-card .ic-big{
+    width:54px; height:54px; border-radius:50%; background:var(--pink-tint);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .contact-card .ic-big svg{width:24px;height:24px; stroke:var(--pink-deep);}
+  .contact-card .c-label{font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);}
+  .contact-card .c-value{font-size:.98rem; font-weight:600; color:var(--ink);}
+
+  /* ===== Footer ===== */
+  footer{background:var(--ink); color:#D9CDD3; padding:44px 0 28px;}
+  .footer-inner{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:20px;}
+  .footer-brand{font-family:var(--serif); font-size:1.1rem; color:var(--white); font-weight:600;}
+  .footer-links{display:flex; gap:22px;}
+  .footer-links a{font-size:.85rem; font-weight:500; display:flex; align-items:center; gap:7px; transition:color .2s ease;}
+  .footer-links a:hover{color:var(--pink-soft);}
+  .footer-links svg{width:16px;height:16px;}
+  .footer-bottom{margin-top:28px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.08); font-size:.78rem; color:#8C7E85; text-align:center;}
+
+  /* ===== Responsive ===== */
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1; margin-bottom:10px;}
+    .about-grid{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:repeat(3,1fr);}
+    .projects-grid{grid-template-columns:repeat(2,1fr);}
+    .certs-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-cards{grid-template-columns:1fr;}
+  }
+  @media (max-width:720px){
+    nav.links{display:none;}
+    .wrap{padding:0 20px;}
+    .nav-inner{padding:16px 20px;}
+    .hero{padding:130px 0 70px;}
+    section{padding:70px 0;}
+    .skills-grid{grid-template-columns:repeat(2,1fr);}
+    .projects-grid{grid-template-columns:1fr;}
+    .certs-grid{grid-template-columns:1fr;}
+    .focus-list{grid-template-columns:1fr;}
+    .pulse-orb{width:230px;height:230px;}
+    .metric-card{padding:10px 14px;}
+    .metric-1{left:-6px;}
+    .metric-2{right:-6px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">Priya<span>.</span></a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn-mini" href="Priya_Darshini_Resume.pdf" download>Resume</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Open to Digital Marketing Roles</div>
+        <h1 class="name">Priya Darshini V</h1>
+        <p class="role-line">MBA Digital Marketing &nbsp;|&nbsp; Performance Marketing &amp; CRM Enthusiast</p>
+        <p class="tagline">Driving customer engagement through SEO, analytics, and marketing automation — turning campaign data into decisions that move the needle for brands.</p>
+        <div class="loc-line">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Hosur, Tamil Nadu
+        </div>
+        <div class="hero-actions">
+          <a href="Priya_Darshini_Resume.pdf" download class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>
+            Download Resume
+          </a>
+          <a href="tel:+919003741812" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            +91 90037 41812
+          </a>
+          <a href="https://www.linkedin.com/in/priya-darshini-/" target="_blank" rel="noopener" class="icon-circle" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v1.5A5 5 0 0 1 16 8Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:priyadarshiniv0208@gmail.com" class="icon-circle" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="photo-frame">
+          <img src="priya-photo.jpeg" alt="Priya Darshini V">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="about-card">
+            <span class="quote-mark">"</span>
+            <p>MBA candidate specializing in Digital Marketing with hands-on experience in SEO, Google Ads, Sprinklr, and Salesforce Marketing Cloud — plus social listening, influencer analytics, and campaign performance analysis. Passionate about performance marketing, CRM automation, and data-driven growth strategies.</p>
+          </div>
+          <div class="focus-list">
+            <div class="focus-item"><span class="sw"></span>SEO &amp; AEO</div>
+            <div class="focus-item"><span class="sw"></span>Performance Marketing</div>
+            <div class="focus-item"><span class="sw"></span>CRM Automation</div>
+            <div class="focus-item"><span class="sw"></span>Social Listening</div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="section-eyebrow">Education</div>
+          <h2 class="section-title" style="margin-bottom:26px;">Academic Background</h2>
+          <div class="edu-list">
+            <div class="edu-item">
+              <div>
+                <div class="deg">MBA – Digital Marketing &amp; Digital Business</div>
+                <div class="sch">CMS Business School, Jain Deemed-to-be University, Bangalore · CGPA 8.8</div>
+              </div>
+              <div class="yr">2025–2027</div>
+            </div>
+            <div class="edu-item">
+              <div>
+                <div class="deg">B.Com – Finance and Taxation</div>
+                <div class="sch">M.O.P. Vaishnav College for Women, Chennai · CGPA 8.179</div>
+              </div>
+              <div class="yr">2022–2025</div>
+            </div>
+            <div class="edu-item">
+              <div>
+                <div class="deg">Higher Secondary Certificate</div>
+                <div class="sch">St. Joseph Matric Hr. Sec. School, Hosur · 93.34% · Centum (100%) in Commerce &amp; Accountancy</div>
+              </div>
+              <div class="yr">2021–2022</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Career Journey</div>
+        <h2 class="section-title">Experience</h2>
+        <p class="section-sub">Hands-on internships spanning performance marketing analytics and financial operations.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div class="tl-role">Digital Media &amp; Performance Marketing Intern</div>
+              <div class="tl-date">May 2026 – Aug 2026</div>
+            </div>
+            <div class="tl-org">TVS Motor Company · Bengaluru, Karnataka</div>
+            <ul class="tl-list">
+              <li>Managed social listening and performance analytics using Sprinklr, tracking views, comments, and engagement rate.</li>
+              <li>Drove the India launch project for Norton Motorcycles using Salesforce Marketing Cloud for lead management and customer engagement.</li>
+              <li>Conducted competitor benchmarking — Share of Voice, sentiment analysis, and earned reach.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tag">Sprinklr</span>
+              <span class="tag">Salesforce Marketing Cloud</span>
+              <span class="tag">Social Listening</span>
+              <span class="tag">Engagement Analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div class="tl-role">Finance Intern</div>
+              <div class="tl-date">Apr 2024 – May 2024</div>
+            </div>
+            <div class="tl-org">TVS Motor Company · Hosur, India</div>
+            <ul class="tl-list">
+              <li>Supported financial reporting and audit documentation for the finance team.</li>
+              <li>Gained hands-on exposure to SAP ERP software for daily financial operations.</li>
+              <li>Assisted with budgeting activities and financial data processing.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tag">SAP ERP</span>
+              <span class="tag">Financial Reporting</span>
+              <span class="tag">Budgeting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-band" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Toolkit</div>
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">Platforms and practices used across live campaigns and industry projects.</p>
+      </div>
+      <div class="skills-grid reveal">
+        <div class="skill-chip"><div class="ic">SE</div><div class="nm">SEO &amp; AEO</div></div>
+        <div class="skill-chip"><div class="ic">GA</div><div class="nm">Google Ads</div></div>
+        <div class="skill-chip"><div class="ic">GA</div><div class="nm">Google Analytics</div></div>
+        <div class="skill-chip"><div class="ic">SP</div><div class="nm">Sprinklr</div></div>
+        <div class="skill-chip"><div class="ic">SF</div><div class="nm">Salesforce</div></div>
+        <div class="skill-chip"><div class="ic">MC</div><div class="nm">Marketing Cloud</div></div>
+        <div class="skill-chip"><div class="ic">SM</div><div class="nm">Social Media Marketing</div></div>
+        <div class="skill-chip"><div class="ic">CM</div><div class="nm">Campaign Management</div></div>
+        <div class="skill-chip"><div class="ic">HT</div><div class="nm">HTML</div></div>
+        <div class="skill-chip"><div class="ic">CS</div><div class="nm">CSS</div></div>
+        <div class="skill-chip"><div class="ic">CV</div><div class="nm">Canva</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Selected Work</div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-sub">CRM implementation, SEO strategy, and web projects built for real brands.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="proj-card reveal">
+          <div class="proj-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="proj-tag">Industry Project</div>
+          <div class="proj-title">Salesforce Marketing Cloud CRM for Norton Motorcycles</div>
+          <ul class="proj-list">
+            <li>Integrated Salesforce Sales Cloud with Marketing Cloud Connect.</li>
+            <li>Built customer segmentation using Data Extensions.</li>
+            <li>Mapped automated journeys in Journey Builder.</li>
+            <li>Proposed AI-driven lead scoring via Einstein Analytics.</li>
+          </ul>
+          <a href="salesforce_crm.pdf" target="_blank" rel="noopener" class="proj-link">
+            View Project Evidence
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg>
+          </div>
+          <div class="proj-tag">Web Project</div>
+          <div class="proj-title">Trendify — Digital Marketing Agency Website</div>
+          <ul class="proj-list">
+            <li>Designed a responsive agency website with dedicated service pages.</li>
+            <li>Implemented SEO-friendly content structure.</li>
+            <li>Added lead capture forms and engagement features.</li>
+          </ul>
+          <a href="https://riddhi25003210.wixsite.com/trendify" target="_blank" rel="noopener" class="proj-link">
+            View Live Website
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <div class="proj-tag">SEO Project</div>
+          <div class="proj-title">Trinkets — SEO &amp; Digital Marketing Strategy</div>
+          <ul class="proj-list">
+            <li>Developed an off-page SEO and backlink strategy.</li>
+            <li>Created AEO and GEO optimization plans.</li>
+            <li>Performed keyword and user-intent analysis.</li>
+            <li>Designed content marketing strategies.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="certs" id="certifications">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Credentials</div>
+        <h2 class="section-title">Certifications</h2>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card reveal">
+          <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div class="cert-name">Google Analytics Certification</div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div class="cert-name">Google Ads App Certification</div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div class="cert-name">Customer Segmentation — LinkedIn Learning</div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div class="cert-name">Social Media Marketing for Small Business — LinkedIn Learning</div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div class="cert-name">Workshop on Artificial Intelligence Tools</div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div class="cert-name">Internship Certificate — TVS Motor Company</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Get in Touch</div>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-sub">Open to Digital Marketing, Performance Marketing, CRM, and Marketing Analytics roles.</p>
+      </div>
+
+      <div class="contact-cards reveal">
+        <a href="mailto:priyadarshiniv0208@gmail.com" class="contact-card">
+          <div class="ic-big"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div class="c-label">Email</div>
+          <div class="c-value">priyadarshiniv0208@gmail.com</div>
+        </a>
+        <a href="tel:+919003741812" class="contact-card">
+          <div class="ic-big"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+          <div class="c-label">Phone</div>
+          <div class="c-value">+91 90037 41812</div>
+        </a>
+        <a href="https://www.linkedin.com/in/priya-darshini-/" target="_blank" rel="noopener" class="contact-card">
+          <div class="ic-big"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v1.5A5 5 0 0 1 16 8Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div class="c-label">LinkedIn</div>
+          <div class="c-value">/in/priya-darshini-</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">Priya Darshini V</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/priya-darshini-/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v1.5A5 5 0 0 1 16 8Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:priyadarshiniv0208@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        Email
+      </a>
+      <a href="tel:+919003741812">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        +91 90037 41812
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Priya Darshini V. Built for Digital Marketing, CRM &amp; Performance Marketing roles.</div>
+</footer>
+
+<script>
+  // Nav shadow on scroll
+  const navEl = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 12);
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
